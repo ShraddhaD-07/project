@@ -97,9 +97,9 @@ The system is organized as a clean pipeline: every transaction is classified (in
                           └────────────────────────────┘
 ```
 
-**Design principle:** classify every transaction (incoming/outgoing + category) automatically on upload, so downstream forecasting and recommendations always operate on clean, structured data.
-**Multi-Agent Architecture** — The system follows a multi-agent architecture where specialized agents handle transaction classification, forecasting, insight generation, and recommendation tasks independently while collaborating through the API layer.
-**SDD (Spec-Driven Development)** — Requirements, workflows, and system behavior are defined through detailed specifications before implementation, improving consistency, scalability, and development efficiency.
+- **Design principle:** Classify every transaction (incoming/outgoing + category) automatically on upload, so downstream forecasting and recommendations always operate on clean, structured data.
+- **Multi-Agent Architecture:** The system follows a multi-agent architecture where specialized agents handle transaction classification, forecasting, insight generation, and recommendation tasks independently while collaborating through the API layer.
+- **SDD (Spec-Driven Development):** Requirements, workflows, and system behavior are defined through detailed specifications before implementation, improving consistency, scalability, and development efficiency.
 
 ## Technology Stack
 

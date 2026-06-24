@@ -47,7 +47,6 @@ Financial stress is rarely about income alone — it's about uncertainty. Giving
 | **Act before it's too late** | Forecasting low balances days in advance gives people time to adjust spending, not just react after an overdraft. |
 | **Save without the spreadsheet** | Automated pattern detection finds savings opportunities people would never spot manually. |
 | **Built for real life** | Supports multiple currencies and real bank statement formats, not just toy demo data. |
-| **AI that explains itself** | Plain-language insights mean users understand why a forecast looks the way it does. |
 
 ## Features
 

@@ -105,7 +105,8 @@ The system is organized as a clean pipeline: every transaction is classified (in
 - **Forecasting Engine** — Uses Prophet / ARIMA time-series models to project account balances 30 or 90 days into the future, with confidence bands that widen further out and narrow as new transactions arrive.
 - **AI Insight Service** — Uses OpenAI APIs to generate plain-language explanations of forecasts and personalized savings recommendations, so users understand *why* a forecast looks the way it does, not just the number itself.
 - **Transaction Classification** — Automatically extracts and classifies every transaction into one of 11 expense categories on upload, forming the structured data foundation that forecasting and AI insights are built on.
-
+- **Scenario Simulator** — Uses natural-language inputs to evaluate "what-if" financial scenarios, generating an updated cash flow forecast, 90-day impact analysis, risk assessment, and actionable recommendations.
+  
 ## Model Performance & Metrics
 
 **ML Model Metrics** — Model performance is evaluated using forecast accuracy, classification quality, prediction confidence intervals, and validation against historical transaction data.

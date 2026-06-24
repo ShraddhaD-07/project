@@ -53,7 +53,7 @@ Financial stress is rarely about income alone — it's about uncertainty. Giving
 - 📂 **Multi-format upload** — drag-and-drop CSV, Excel, or PDF bank statements, with instant column validation
 - 🏷️ **Automatic transaction classification** — every transaction tagged Incoming/Outgoing and sorted into 11 expense categories
 - 📊 **Real-time dashboard** — KPI cards, inflow vs. outflow charts, and category breakdowns
-- 🔮 **90-day forecasting** — balance projections with confidence bands, supporting 30/90-day horizons
+- 🔮 **90-day forecasting** — balance projections with confidence bands, supporting 90-day horizons
 - 🎛️ **What-if simulation** — sliders to model income changes, expense cuts, or one-time purchases live
 - 🔔 **Alerts & AI tips** — automatic low-balance warnings and AI-generated savings recommendations
 - 🌍 **Multi-currency support** — INR, USD, and EUR with live conversion

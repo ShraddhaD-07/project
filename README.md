@@ -74,10 +74,7 @@ The product flows through six stages, from raw statement to actionable insight:
 
 The system is organized as a clean pipeline: every transaction is classified (incoming/outgoing + category) automatically on upload, so forecasting and recommendations always work off clean, structured data.
 
-
-<img width="1536" height="1024" alt="Architecture" src="https://github.com/user-attachments/assets/7ad9ed81-b4e1-4276-af79-795144ed1b4b" />
-
-
+<img width="1448" height="1086" alt="architecture" src="https://github.com/user-attachments/assets/9508d29b-eb62-42d1-b720-c5f1819e44e4" />
 
 
 - **Design principle:** Classify every transaction (incoming/outgoing + category) automatically on upload, so downstream forecasting and recommendations always operate on clean, structured data.

@@ -32,8 +32,6 @@ Banking apps show what already happened. Spreadsheets are manual and quickly go 
 
 Personal Cash Flow Predictor closes that gap. Upload a bank statement, and the system automatically classifies every transaction, builds a 90-day balance forecast, and surfaces plain-language insights and savings opportunities — turning financial anxiety into financial confidence.
 
-*Built as a hackathon submission by a team project.*
-
 ## Problem Statement
 
 - **Low-balance surprises** — Unexpected shortfalls arrive before the next paycheck, with no warning.

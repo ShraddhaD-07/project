@@ -53,6 +53,7 @@ Financial stress is rarely about income alone — it's about uncertainty. Giving
 - 📂 **Multi-format upload** — drag-and-drop CSV, Excel, or PDF bank statements, with instant column validation
 - 🏷️ **Automatic transaction classification** — every transaction tagged Incoming/Outgoing and sorted into 11 expense categories
 - 📊 **Real-time dashboard** — KPI cards, inflow vs. outflow charts, and category breakdowns
+- 📄 **Pagination support** — Large transaction datasets are split into manageable pages, improving navigation, reducing load times, and enhancing overall user experience.
 - 🔮 **90-day forecasting** — balance projections with confidence bands, supporting 90-day horizons
 - 🎛️ **What-if simulation** — sliders to model income changes, expense cuts, or one-time purchases live
 - 🔔 **Alerts & Recommendations** — automatic low-balance warnings and AI-generated savings recommendations
@@ -97,6 +98,8 @@ The system is organized as a clean pipeline: every transaction is classified (in
 ```
 
 **Design principle:** classify every transaction (incoming/outgoing + category) automatically on upload, so downstream forecasting and recommendations always operate on clean, structured data.
+**Multi-Agent Architecture** — The system follows a multi-agent architecture where specialized agents handle transaction classification, forecasting, insight generation, and recommendation tasks independently while collaborating through the API layer.
+**SDD (Spec-Driven Development)** — Requirements, workflows, and system behavior are defined through detailed specifications before implementation, improving consistency, scalability, and development efficiency.
 
 ## Technology Stack
 
@@ -121,6 +124,8 @@ The system is organized as a clean pipeline: every transaction is classified (in
 - **Transaction Classification** — Automatically extracts and classifies every transaction into one of 11 expense categories on upload, forming the structured data foundation that forecasting and AI insights are built on.
 
 ## Model Performance & Metrics
+
+**ML Model Metrics** — Model performance is evaluated using forecast accuracy, classification quality, prediction confidence intervals, and validation against historical transaction data.
 
 | Metric | Value |
 |---|---|

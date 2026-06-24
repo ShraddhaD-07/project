@@ -100,14 +100,19 @@ The system is organized as a clean pipeline: every transaction is classified (in
 
 ## Technology Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | Loveable.dev (React + Tailwind, shadcn/ui) |
-| **Backend** | Python FastAPI |
-| **Database** | PostgreSQL |
-| **Forecasting** | Prophet | 
-| **AI Layer** | OpenAI APIs |
-| **Deployment** | Render |
+| Layer               | Technology                                  |
+| ------------------- | ------------------------------------------- |
+| Frontend            | Lovable.dev, React, Tailwind CSS, shadcn/ui |
+| Backend             | Python, FastAPI                             |
+| Database            | PostgreSQL                                  |
+| Document Processing | PDFPlumber                                  |
+| Forecasting         | Prophet                                     |
+| AI/LLM              | OpenAI APIs                                 |
+| API Testing         | Postman                                     |
+| Server              | Uvicorn                                     |
+| Testing             | Playwright                                  |
+| Deployment          | Render                                      |
+
 
 ## AI Components
 

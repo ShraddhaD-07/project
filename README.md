@@ -67,7 +67,7 @@ The product flows through six stages, from raw statement to actionable insight:
 3. **Dashboard** — KPI cards, inflow vs. outflow charts, and a category breakdown update in real time.
 4. **Forecast** — A 90-day forecast with confidence bands shows where the balance is headed.
 5. **What-If** — Sliders simulate income changes, expense cuts, or one-time purchases live.
-6. **Alerts & Tips** — Low-balance warnings and AI savings recommendations surface automatically.
+6. **Alerts & Recommendations** — Low-balance warnings and AI savings recommendations surface automatically.
 
 ## Architecture
 
@@ -105,7 +105,7 @@ The system is organized as a clean pipeline: every transaction is classified (in
 | **Frontend** | Loveable.dev (React + Tailwind, shadcn/ui) |
 | **Backend** | Python FastAPI |
 | **Database** | PostgreSQL |
-| **Forecasting** | Prophet / ARIMA (time-series models) |
+| **Forecasting** | Prophet | 
 | **AI Layer** | OpenAI APIs |
 | **Deployment** | Render |
 
@@ -138,17 +138,15 @@ The system is organized as a clean pipeline: every transaction is classified (in
 - **Clean data beats clever models** — Time spent on robust parsing and classification paid off more than tuning the forecasting model itself.
 - **Explainability builds trust** — Users trust a forecast more when it comes with a plain-language reason, not just a number.
 - **Design for real currencies, not demos** — Building multi-currency support from day one avoided a costly retrofit later.
-- **Scope discipline matters under time pressure** — Splitting work into foundation → forecasting → polish (week by week) kept the team from over-building early.
-
+  
 ## Future Enhancements
 
 - 💬 **Conversational financial assistant** — Let users ask questions in plain English and get grounded answers from their own data.
 - 🚨 **Anomaly detection** — Flag unusual transactions automatically, beyond simple low-balance alerts.
 - 🏦 **Multi-account support** — Aggregate checking, savings, and credit accounts into one unified forecast.
 - 🎯 **Goal-based savings plans** — Let users set a target (e.g. a trip or down payment) and get a tailored plan to reach it.
-- ✅ **Stronger model validation** — Expand backtesting across more histories and seasons to tighten confidence intervals.
 - 📉 **Subscription optimization** — Surface underused subscriptions and suggest cancellations automatically.
 
 ---
 
-*Personal Cash Flow Predictor — Hackathon Submission, Team Project.*
+*Personal Cash Flow Predictor — Team Project.*

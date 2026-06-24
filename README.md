@@ -74,28 +74,8 @@ The product flows through six stages, from raw statement to actionable insight:
 
 The system is organized as a clean pipeline: every transaction is classified (incoming/outgoing + category) automatically on upload, so forecasting and recommendations always work off clean, structured data.
 
-```
-┌──────────────┐     ┌──────────────┐     ┌──────────────────┐
-│   Frontend    │────▶│  API Layer   │────▶│   Parsing Layer    │
-│ Loveable.dev  │     │   FastAPI    │     │  Transaction       │
-│ (React +      │     │   (Python)   │     │  extraction &      │
-│  Tailwind)    │     │              │     │  classification    │
-└──────────────┘     └──────────────┘     └──────────────────┘
-                              │                       │
-                              ▼                       ▼
-                     ┌──────────────────┐   ┌──────────────────┐
-                     │ Forecasting Engine │   │  AI Insight        │
-                     │ Prophet / ARIMA     │   │  Service            │
-                     │ time-series models  │   │  OpenAI APIs        │
-                     └──────────────────┘   └──────────────────┘
-                              │                       │
-                              ▼                       ▼
-                          ┌────────────────────────────┐
-                          │        PostgreSQL            │
-                          │  Persistent transaction &    │
-                          │  user data                    │
-                          └────────────────────────────┘
-```
+![Uploading Architecture.png…]()
+
 
 - **Design principle:** Classify every transaction (incoming/outgoing + category) automatically on upload, so downstream forecasting and recommendations always operate on clean, structured data.
 - **Multi-Agent Architecture:** The system follows a multi-agent architecture where specialized agents handle transaction classification, forecasting, insight generation, and recommendation tasks independently while collaborating through the API layer.

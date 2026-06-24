@@ -93,7 +93,7 @@ The system is organized as a clean pipeline: every transaction is classified (in
 | Database            | PostgreSQL                                  |
 | Document Processing | PDFPlumber                                  |
 | Forecasting         | Prophet                                     |
-| AI/LLM              | OpenAI APIs                                 |
+| AI                  | OpenAI APIs                                 |
 | API Testing         | Postman                                     |
 | Server              | Uvicorn                                     |
 | Testing             | Playwright                                  |

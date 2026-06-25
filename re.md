@@ -263,7 +263,6 @@ The system is organized as a clean pipeline: every transaction is classified (in
 
 <div align="center">
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/3ce27583-5667-4f92-87e2-72d6ba8c7911" />
-" />
 </div>
 
 > [!NOTE]

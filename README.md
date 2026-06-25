@@ -8,7 +8,7 @@
 
 [![Status](https://img.shields.io/badge/status-active-2DD4BF?style=for-the-badge&labelColor=1E293B)](#)
 [![Made With](https://img.shields.io/badge/made%20with-Python%20%2B%20React-6366F1?style=for-the-badge&labelColor=1E293B)](#)
-[![Forecasting](https://img.shields.io/badge/forecasting-Prophet%20%2F%20ARIMA-F472B6?style=for-the-badge&labelColor=1E293B)](#)
+[![Forecasting](https://img.shields.io/badge/forecasting-Prophet%20%2F%20F472B6?style=for-the-badge&labelColor=1E293B)](#)
 [![License](https://img.shields.io/badge/license-Team%20Project-FBBF24?style=for-the-badge&labelColor=1E293B)](#)
 
 </div>

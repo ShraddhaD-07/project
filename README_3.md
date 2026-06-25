@@ -323,42 +323,53 @@ Requirements, workflows, and system behavior are defined through detailed specif
 **Level 1 — System Context**
 
 ```mermaid
-C4Context
-    title C4 Level 1 — System Context
+flowchart LR
+    User(["👤 <b>User</b><br/><i>Personal finance management</i>"])
+    Cash["🖥️ <b>Cash Flow Predictor</b><br/>&lt;&lt;System&gt;&gt;<br/><i>AI-powered financial<br/>forecasting platform</i>"]
+    OpenAI[/"🤖 <b>OpenAI API</b><br/>&lt;&lt;External System&gt;&gt;"/]
+    Bank[/"🏦 <b>Bank Statements</b><br/>&lt;&lt;External: PDF files&gt;&gt;"/]
 
-    Person(user, "User", "Personal finance management")
-    System(cashflow, "Cash Flow Predictor", "AI-powered financial forecasting platform")
-    System_Ext(openai, "OpenAI API", "External System")
-    System_Ext(statements, "Bank Statements", "External: PDF files")
+    User -- "Uploads, views" --> Cash
+    Cash -- "LLM calls" --> OpenAI
+    Cash -- "Parses PDFs" --> Bank
 
-    Rel(user, cashflow, "Uploads, views")
-    Rel(cashflow, openai, "LLM calls")
-    Rel(cashflow, statements, "Parses PDFs")
+    classDef person fill:#1E3A8A,stroke:#60A5FA,stroke-width:2px,color:#EFF6FF,rx:12,ry:12
+    classDef system fill:#2563EB,stroke:#93C5FD,stroke-width:2px,color:#EFF6FF,rx:12,ry:12
+    classDef external fill:#475569,stroke:#94A3B8,stroke-width:2px,color:#F1F5F9,rx:8,ry:8
 
-    UpdateRelStyle(user, cashflow, $offsetY="-10")
-    UpdateRelStyle(cashflow, openai, $offsetY="-10")
-    UpdateRelStyle(cashflow, statements, $offsetY="10")
+    class User person
+    class Cash system
+    class OpenAI,Bank external
+
+    linkStyle default stroke:#94A3B8,stroke-width:1.5px
 ```
 
 **Level 2 — Containers**
 
 ```mermaid
-C4Container
-    title C4 Level 2 — Containers
+flowchart TB
+    subgraph BOUNDARY["Cash Flow Predictor [SYSTEM]"]
+        direction LR
+        React["⚛️ <b>React App</b><br/>&lt;&lt;Container: SPA&gt;&gt;<br/><br/><i>Dashboard, charts,<br/>chat, simulations</i>"]
+        FastAPI["⚙️ <b>FastAPI Backend</b><br/>&lt;&lt;Container: Python API&gt;&gt;<br/><br/><i>REST endpoints,<br/>auth, routing</i>"]
+        AIService["🧠 <b>AI Insight Service</b><br/>&lt;&lt;Container: Python&gt;&gt;<br/><br/><i>OpenAI calls, RAG,<br/>LangGraph flows</i>"]
+        Forecast["🔮 <b>Forecast Engine</b><br/>&lt;&lt;Container: Python&gt;&gt;<br/><br/><i>Prophet / ARIMA,<br/>time-series models</i>"]
+        Postgres[("🗄️ <b>PostgreSQL</b><br/>&lt;&lt;Container: DB&gt;&gt;<br/><br/><i>Transactions, users,<br/>forecasts, alerts</i>")]
 
-    System_Boundary(cashflow, "Cash Flow Predictor") {
-        Container(react, "React App", "SPA", "Dashboard, charts, chat, simulations")
-        Container(fastapi, "FastAPI Backend", "Container: Python API", "REST endpoints, auth, routing")
-        Container(aiservice, "AI Insight Service", "Container: Python", "OpenAI calls, RAG, LangGraph flows")
-        Container(forecast, "Forecast Engine", "Container: Python", "Prophet / ARIMA, time-series models")
-        ContainerDb(postgres, "PostgreSQL", "Container: DB", "Transactions, users, forecasts, alerts")
-    }
+        React -- "REST/JSON" --> FastAPI
+        FastAPI -- "calls" --> AIService
+        FastAPI -- "triggers" --> Forecast
+        Forecast -- "reads/writes" --> Postgres
+        AIService -- "reads/writes" --> Postgres
+    end
 
-    Rel(react, fastapi, "REST/JSON")
-    Rel(fastapi, aiservice, "calls")
-    Rel(fastapi, forecast, "triggers")
-    Rel(forecast, postgres, "reads/writes")
-    Rel(aiservice, postgres, "reads/writes")
+    classDef container fill:#2563EB,stroke:#93C5FD,stroke-width:2px,color:#EFF6FF,rx:10,ry:10
+    classDef db fill:#0E7490,stroke:#67E8F9,stroke-width:2px,color:#ECFEFF,rx:10,ry:10
+
+    class React,FastAPI,AIService,Forecast container
+    class Postgres db
+    style BOUNDARY fill:none,stroke:#64748B,stroke-width:1.5px,stroke-dasharray:6 4
+    linkStyle default stroke:#94A3B8,stroke-width:1.5px
 ```
 
 **Level 3 — Components (FastAPI Backend)**
@@ -366,13 +377,18 @@ C4Container
 ```mermaid
 flowchart LR
     subgraph BOUNDARY["FastAPI Backend [Container Boundary]"]
-        Auth["Auth<br/><i>JWT, OAuth validation</i>"]
-        Parser["Statement Parser<br/><i>PDF → transactions</i>"]
-        Processor["Transaction Processor<br/><i>Categorize, dedupe</i>"]
-        Orchestrator["Forecast Orchestrator<br/><i>Calls forecast engine</i>"]
-        Alert["Alert Service<br/><i>Low-balance alerts</i>"]
-        Simulation["Simulation Service<br/><i>What-if scenarios</i>"]
-        Gateway["AI Gateway<br/><i>LLM proxy</i>"]
+        direction LR
+        Auth["🔐 <b>Auth</b><br/><i>JWT, OAuth validation</i>"]
+        Parser["📄 <b>Statement Parser</b><br/><i>PDF → transactions</i>"]
+        Processor["🏷️ <b>Transaction Processor</b><br/><i>Categorize, dedupe</i>"]
+
+        subgraph DOWNSTREAM[" "]
+            direction TB
+            Orchestrator["🔮 <b>Forecast Orchestrator</b><br/><i>Calls forecast engine</i>"]
+            Alert["🔔 <b>Alert Service</b><br/><i>Low-balance alerts</i>"]
+            Simulation["🎛️ <b>Simulation Service</b><br/><i>What-if scenarios</i>"]
+            Gateway["🤖 <b>AI Gateway</b><br/><i>LLM proxy</i>"]
+        end
 
         Auth --> Parser
         Parser --> Processor
@@ -382,13 +398,13 @@ flowchart LR
         Processor -.-> Gateway
     end
 
-    classDef auth fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F,rx:8,ry:8
-    classDef parser fill:#D1FAE5,stroke:#10B981,stroke-width:2px,color:#064E3B,rx:8,ry:8
-    classDef processor fill:#D1FAE5,stroke:#10B981,stroke-width:2px,color:#064E3B,rx:8,ry:8
-    classDef orchestrator fill:#DBEAFE,stroke:#3B82F6,stroke-width:2px,color:#1E3A8A,rx:8,ry:8
-    classDef alert fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#7F1D1D,rx:8,ry:8
-    classDef simulation fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F,rx:8,ry:8
-    classDef gateway fill:#E0E7FF,stroke:#6366F1,stroke-width:2px,color:#312E81,rx:8,ry:8
+    classDef auth fill:#92400E,stroke:#FBBF24,stroke-width:2px,color:#FFFBEB,rx:10,ry:10
+    classDef parser fill:#065F46,stroke:#34D399,stroke-width:2px,color:#ECFDF5,rx:10,ry:10
+    classDef processor fill:#065F46,stroke:#34D399,stroke-width:2px,color:#ECFDF5,rx:10,ry:10
+    classDef orchestrator fill:#1E3A8A,stroke:#60A5FA,stroke-width:2px,color:#EFF6FF,rx:10,ry:10
+    classDef alert fill:#9D174D,stroke:#F472B6,stroke-width:2px,color:#FDF2F8,rx:10,ry:10
+    classDef simulation fill:#92400E,stroke:#FBBF24,stroke-width:2px,color:#FFFBEB,rx:10,ry:10
+    classDef gateway fill:#5B21B6,stroke:#A78BFA,stroke-width:2px,color:#F5F3FF,rx:10,ry:10
 
     class Auth auth
     class Parser parser
@@ -397,7 +413,9 @@ flowchart LR
     class Alert alert
     class Simulation simulation
     class Gateway gateway
-    style BOUNDARY fill:none,stroke:#94A3B8,stroke-dasharray:5 5
+    style BOUNDARY fill:none,stroke:#64748B,stroke-width:1.5px,stroke-dasharray:6 4
+    style DOWNSTREAM fill:none,stroke:none
+    linkStyle default stroke:#94A3B8,stroke-width:1.5px
 ```
 
 **Code Level — ForecastOrchestrator**
@@ -527,7 +545,7 @@ Uses natural-language inputs to evaluate "what-if" financial scenarios, generati
 
 <div align="center">
 
-| Metric | What It Measures | Our Model Performance |
+| Metric | What It Measures | Our Model Performance* |
 |:---|:---|:---|
 | 📏 **Mean Absolute Error (MAE)** | Average magnitude of forecast errors, in the same units as the balance itself | 5.0% of average balance |
 | 📐 **Root Mean Squared Error (RMSE)** | Penalizes larger forecast misses more heavily than small ones | 7.0% of average balance |

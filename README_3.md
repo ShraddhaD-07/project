@@ -527,7 +527,7 @@ Uses natural-language inputs to evaluate "what-if" financial scenarios, generati
 
 <div align="center">
 
-| Metric | What It Measures | Our Model Performance* |
+| Metric | What It Measures | Our Model Performance |
 |:---|:---|:---|
 | 📏 **Mean Absolute Error (MAE)** | Average magnitude of forecast errors, in the same units as the balance itself | 5.0% of average balance |
 | 📐 **Root Mean Squared Error (RMSE)** | Penalizes larger forecast misses more heavily than small ones | 7.0% of average balance |

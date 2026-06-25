@@ -325,7 +325,7 @@ Requirements, workflows, and system behavior are defined through detailed specif
 ```mermaid
 flowchart LR
     User(["👤 <b>User</b><br/><i>Personal finance management</i>"])
-    Cash["🖥️ <b>Cash Flow Predictor</b><br/>&lt;&lt;System&gt;&gt;<br/><i>AI-powered financial<br/>forecasting platform</i>"]
+    Cash["🖥️ <b>Cash Flow Predictor</b><br/>&lt;&lt;Software System&gt;&gt;<br/><i>AI-powered financial<br/>forecasting platform</i>"]
     OpenAI[/"🤖 <b>OpenAI API</b><br/>&lt;&lt;External System&gt;&gt;"/]
     Bank[/"🏦 <b>Bank Statements</b><br/>&lt;&lt;External: PDF files&gt;&gt;"/]
 

@@ -348,19 +348,27 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    subgraph BOUNDARY["Cash Flow Predictor [SYSTEM]"]
-        direction LR
-        React["⚛️ <b>React App</b><br/>&lt;&lt;Container: SPA&gt;&gt;<br/><br/><i>Dashboard, charts,<br/>chat, simulations</i>"]
-        FastAPI["⚙️ <b>FastAPI Backend</b><br/>&lt;&lt;Container: Python API&gt;&gt;<br/><br/><i>REST endpoints,<br/>auth, routing</i>"]
-        AIService["🧠 <b>AI Insight Service</b><br/>&lt;&lt;Container: Python&gt;&gt;<br/><br/><i>OpenAI calls, RAG,<br/>LangGraph flows</i>"]
-        Forecast["🔮 <b>Forecast Engine</b><br/>&lt;&lt;Container: Python&gt;&gt;<br/><br/><i>Prophet / ARIMA,<br/>time-series models</i>"]
-        Postgres[("🗄️ <b>PostgreSQL</b><br/>&lt;&lt;Container: DB&gt;&gt;<br/><br/><i>Transactions, users,<br/>forecasts, alerts</i>")]
+    subgraph BOUNDARY["Cash Flow Predictor [System Boundary]"]
+        direction TB
+
+        subgraph ROW1[" "]
+            direction LR
+            React["⚛️ <b>React App</b><br/>&lt;&lt;Container: SPA&gt;&gt;<br/><br/><i>Dashboard, charts,<br/>chat, simulations</i>"]
+            FastAPI["⚙️ <b>FastAPI Backend</b><br/>&lt;&lt;Container: Python API&gt;&gt;<br/><br/><i>REST endpoints,<br/>auth, routing</i>"]
+            AIService["🧠 <b>AI Insight Service</b><br/>&lt;&lt;Container: Python&gt;&gt;<br/><br/><i>OpenAI calls, RAG,<br/>LangGraph flows</i>"]
+        end
+
+        subgraph ROW2[" "]
+            direction LR
+            Forecast["🔮 <b>Forecast Engine</b><br/>&lt;&lt;Container: Python&gt;&gt;<br/><br/><i>Prophet / ARIMA,<br/>time-series models</i>"]
+            Postgres[("🗄️ <b>PostgreSQL</b><br/>&lt;&lt;Container: DB&gt;&gt;<br/><br/><i>Transactions, users,<br/>forecasts, alerts</i>")]
+        end
 
         React -- "REST/JSON" --> FastAPI
         FastAPI -- "calls" --> AIService
         FastAPI -- "triggers" --> Forecast
         Forecast -- "reads/writes" --> Postgres
-        AIService -- "reads/writes" --> Postgres
+        AIService -. "reads/writes" .-> Postgres
     end
 
     classDef container fill:#2563EB,stroke:#93C5FD,stroke-width:2px,color:#EFF6FF,rx:10,ry:10
@@ -369,6 +377,8 @@ flowchart TB
     class React,FastAPI,AIService,Forecast container
     class Postgres db
     style BOUNDARY fill:none,stroke:#64748B,stroke-width:1.5px,stroke-dasharray:6 4
+    style ROW1 fill:none,stroke:none
+    style ROW2 fill:none,stroke:none
     linkStyle default stroke:#94A3B8,stroke-width:1.5px
 ```
 

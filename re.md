@@ -262,8 +262,7 @@ flowchart LR
 The system is organized as a clean pipeline: every transaction is classified (incoming/outgoing + category) automatically on upload, so forecasting and recommendations always work off clean, structured data.
 
 <div align="center">
-<img width="100%" alt="architecture" src="<img width="1400" height="1640" alt="architecture (1)" src="https://github.com/user-attachments/assets/3a71b38e-08d0-444d-873d-b2798d562d63" />
-" />
+<img width="100%" alt="architecture" src="./assets/architecture.png" />
 </div>
 
 > [!NOTE]

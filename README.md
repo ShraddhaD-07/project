@@ -80,7 +80,7 @@ mindmap
       Fast navigation
     🔮 90-Day Forecasting
       Confidence bands
-      30 / 90 day horizons
+      90 day horizons
     🎛️ What-If Simulation
       Live sliders
       Income / expense modeling
